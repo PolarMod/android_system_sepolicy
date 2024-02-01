@@ -10,6 +10,7 @@ neverallow {
   -iorap_prefetcherd
   -iorap_inode2filename
   -mediaprovider_app
+  -valord
 } { app_data_file privapp_data_file }:file ~{ read write map getattr ioctl lock append };
 
 neverallow {

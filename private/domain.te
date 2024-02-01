@@ -147,6 +147,7 @@ neverallow {
   userdebug_or_eng(`-simpleperf_boot')
   -storaged
   -system_server
+  -valord
 } self:global_capability_class_set sys_ptrace;
 
 # Limit ability to generate hardware unique device ID attestations to priv_apps
@@ -208,6 +209,7 @@ neverallow {
   -appdomain
   -app_zygote
   -installd
+  -valord
   -iorap_prefetcherd
   -rs # spawned by appdomain, so carryover the exception above
 } { privapp_data_file app_data_file }:file_class_set open;
@@ -388,6 +390,7 @@ define(`dac_override_allowed', `{
   vendor_init
   vold
   vold_prepare_subdirs
+  valord
   zygote
 }')
 neverallow ~dac_override_allowed self:global_capability_class_set dac_override;
@@ -624,6 +627,7 @@ neverallow {
   -system_server #populate com.android.providers.settings/databases/settings.db.
   -installd # creation of app sandbox
   -iorap_inode2filename
+  -valord
   -traced_probes # resolve inodes for i/o tracing.
                  # only needs open and read, the rest is neverallow in
                  # traced_probes.te.
